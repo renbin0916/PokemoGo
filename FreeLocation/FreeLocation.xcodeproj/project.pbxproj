@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1913A03723374D80005D948D /* PKM.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 1913A03623374D80005D948D /* PKM.gpx */; };
+		0F00A3152337ABAB00C423B3 /* PKM.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 0F00A3142337ABAB00C423B3 /* PKM.gpx */; };
 		194738822333444400F3706C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194738812333444400F3706C /* AppDelegate.swift */; };
 		194738842333444400F3706C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194738832333444400F3706C /* ViewController.swift */; };
 		194738872333444400F3706C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 194738852333444400F3706C /* Main.storyboard */; };
@@ -35,7 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1913A03623374D80005D948D /* PKM.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = PKM.gpx; path = ../../PKM.gpx; sourceTree = "<group>"; };
+		0F00A3142337ABAB00C423B3 /* PKM.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = PKM.gpx; path = ../../../Desktop/PKM.gpx; sourceTree = "<group>"; };
 		1947387E2333444400F3706C /* FreeLocation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FreeLocation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		194738812333444400F3706C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		194738832333444400F3706C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -99,7 +99,7 @@
 		194738802333444400F3706C /* FreeLocation */ = {
 			isa = PBXGroup;
 			children = (
-				1913A03623374D80005D948D /* PKM.gpx */,
+				0F00A3142337ABAB00C423B3 /* PKM.gpx */,
 				194738812333444400F3706C /* AppDelegate.swift */,
 				194738832333444400F3706C /* ViewController.swift */,
 				194738852333444400F3706C /* Main.storyboard */,
@@ -232,7 +232,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1913A03723374D80005D948D /* PKM.gpx in Resources */,
+				0F00A3152337ABAB00C423B3 /* PKM.gpx in Resources */,
 				1947388C2333444500F3706C /* LaunchScreen.storyboard in Resources */,
 				194738892333444500F3706C /* Assets.xcassets in Resources */,
 				194738872333444400F3706C /* Main.storyboard in Resources */,
@@ -437,7 +437,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PXKP46WTDZ;
+				DEVELOPMENT_TEAM = P9NHVM698W;
 				INFOPLIST_FILE = FreeLocation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -455,7 +455,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PXKP46WTDZ;
+				DEVELOPMENT_TEAM = P9NHVM698W;
 				INFOPLIST_FILE = FreeLocation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

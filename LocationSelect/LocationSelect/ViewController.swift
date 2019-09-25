@@ -15,14 +15,42 @@ class ViewController: UIViewController {
     private var _tap: UITapGestureRecognizer?
     private var _CLPointsArray = [CLLocationCoordinate2D]()
     
+    private var _nowPoint: CLLocationCoordinate2D?
+    
+    private var _walkNumber = 0
+    
+    private var _autoNumberArray = [0.000001, 0.000002, 0.000003, 0.000004, 0.000005, 0.000006]
+    
+    private var _timer: Timer?
+    
     /// just alter “Desktop” to your use name
-    private let _gpxPath = "/Users/yi/Desktop/PKM.gpx"
+    private let _gpxPath = "/Users/Rider/Desktop/PKM.gpx"
+    
+    @IBOutlet weak var _fir: UITextField!
+    
+    @IBOutlet weak var _sec: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         _addTapGes()
     }
     
+    @IBAction func _goButtonClicked(_ sender: Any) {
+        if _fir.text?.count ?? 0 > 0 && _sec.text?.count ?? 0 > 0 {
+            let clPoint = CLLocationCoordinate2D(latitude: Double(_fir.text!)! as CLLocationDegrees,  longitude: Double(_sec.text!)! as CLLocationDegrees)
+            _CLPointsArray.append(clPoint)
+            _mapViewAddAnnoView(location: clPoint)
+            _changeGPXFile(with: clPoint)
+            _mapView.centerCoordinate = clPoint
+        }
+    }
+    
+    @IBAction func _beginAutoWalk(_ sender: Any) {
+        _timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self]_ in
+            self?._autoWalk()
+        }
+        
+    }
     
 }
 
@@ -54,6 +82,7 @@ extension ViewController {
         
         do {
            try  newGpxContent.write(toFile: _gpxPath, atomically: false, encoding: .utf8)
+            _nowPoint = point
         }
         catch let error as NSError {
             print(error)
@@ -90,5 +119,33 @@ extension ViewController: MKMapViewDelegate {
             pinView?.annotation = annotation
         }
         return pinView
+    }
+    
+    func _autoWalk() {
+        guard let point = _nowPoint else {
+            return
+        }
+
+        _walkNumber += 1
+        let randomX = _autoNumberArray[_autoIndex()]
+        let randomY = _autoNumberArray[_autoIndex()]
+        var newPoint = point
+        if _walkNumber < 2000 {
+            newPoint = CLLocationCoordinate2D(latitude: point.latitude + randomX, longitude: point.longitude + randomY)
+        } else if _walkNumber < 4000 {
+            newPoint = CLLocationCoordinate2D(latitude: point.latitude - randomX, longitude: point.longitude + randomY)
+        } else if _walkNumber < 6000 {
+            newPoint = CLLocationCoordinate2D(latitude: point.latitude - randomX, longitude: point.longitude - randomY)
+        } else if _walkNumber < 8000 {
+            newPoint = CLLocationCoordinate2D(latitude: point.latitude + randomX, longitude: point.longitude - randomY)
+        } else {
+            _walkNumber = 0
+        }
+        _changeGPXFile(with: newPoint)
+        
+    }
+    
+    func _autoIndex() -> Int {
+        return Int(arc4random()%6)
     }
 }
