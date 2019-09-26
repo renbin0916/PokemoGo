@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,14 +20,12 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                             </mapView>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ce9-Mx-AiU">
-                                <rect key="frame" x="10" y="74" width="169.5" height="30"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="10" y="74" width="169.5" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iYi-Q0-h9t">
-                                <rect key="frame" x="184.5" y="74" width="169.5" height="30"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="184.5" y="74" width="169.5" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -44,10 +40,17 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P39-Hq-hjb">
-                                <rect key="frame" x="184" y="822" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <rect key="frame" x="20" y="822" width="65" height="30"/>
+                                <state key="normal" title="AutoWalk"/>
                                 <connections>
                                     <action selector="_beginAutoWalk:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LKp-NU-Ypu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="48G-my-X1V">
+                                <rect key="frame" x="283" y="822" width="111" height="30"/>
+                                <state key="normal" title="GotoDestination"/>
+                                <connections>
+                                    <action selector="_gotoDestination:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vZn-k4-uv5"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -58,15 +61,17 @@
                             <constraint firstItem="jVQ-wU-1Vv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="87V-YI-bYe"/>
                             <constraint firstItem="iYi-Q0-h9t" firstAttribute="width" secondItem="ce9-Mx-AiU" secondAttribute="width" id="8Rz-aL-ots"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="P39-Hq-hjb" secondAttribute="bottom" constant="10" id="9Oi-hP-8Dm"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="48G-my-X1V" secondAttribute="bottom" constant="10" id="AL8-Sd-6mA"/>
                             <constraint firstItem="ce9-Mx-AiU" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="EJt-30-6ql"/>
                             <constraint firstItem="n8c-ba-ecR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="SGH-aG-DRa"/>
                             <constraint firstItem="jVQ-wU-1Vv" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="TSb-bf-LZJ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="n8c-ba-ecR" secondAttribute="trailing" constant="20" id="UgK-Ts-VOu"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="jVQ-wU-1Vv" secondAttribute="bottom" id="Xeo-ah-oec"/>
-                            <constraint firstItem="P39-Hq-hjb" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="a8Y-U9-d18"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jVQ-wU-1Vv" secondAttribute="trailing" id="ba8-ZM-MwL"/>
                             <constraint firstItem="n8c-ba-ecR" firstAttribute="leading" secondItem="iYi-Q0-h9t" secondAttribute="trailing" constant="10" id="caA-ne-gAP"/>
                             <constraint firstItem="ce9-Mx-AiU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="tlp-pg-n2b"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="48G-my-X1V" secondAttribute="trailing" constant="20" id="v07-TK-DfT"/>
+                            <constraint firstItem="P39-Hq-hjb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="x2I-fu-37E"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -78,6 +83,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="132" y="139"/>
         </scene>
     </scenes>
 </document>

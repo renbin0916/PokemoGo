@@ -16,14 +16,15 @@ class ViewController: UIViewController {
     private var _CLPointsArray = [CLLocationCoordinate2D]()
     
     private var _nowPoint: CLLocationCoordinate2D?
+    private var _destinationPoint: CLLocationCoordinate2D?
     
     private var _walkNumber = 0
     
-    private var _autoNumberArray = [0.000001, 0.000002, 0.000003, 0.000004, 0.000005, 0.000006]
+    private var _autoNumberArray = [0.000002, 0.000004, 0.000005, 0.000006, 0.000007, 0.000008]
     
     private var _timer: Timer?
     
-    /// just alter “Desktop” to your use name
+    /// just alter “Rider” to your use name
     private let _gpxPath = "/Users/Rider/Desktop/PKM.gpx"
     
     @IBOutlet weak var _fir: UITextField!
@@ -50,6 +51,21 @@ class ViewController: UIViewController {
             self?._autoWalk()
         }
         
+    }
+    
+    @IBAction func _gotoDestination(_ sender: UIButton) {
+        if _fir.text?.count ?? 0 > 0 && _sec.text?.count ?? 0 > 0 {
+            _timer?.invalidate()
+            guard let _ = _nowPoint else {
+                return
+            }
+            _destinationPoint = CLLocationCoordinate2D(latitude: Double(_fir.text!)! as CLLocationDegrees,  longitude: Double(_sec.text!)! as CLLocationDegrees)
+            
+            _timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self]_ in
+                self?._goDestinationWithTimer()
+            }
+            
+        }
     }
     
 }
@@ -102,24 +118,6 @@ extension ViewController {
         </gpx>
         """
     }
-}
-
-extension ViewController: MKMapViewDelegate {
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        if annotation is MKUserLocation {
-            return nil
-        }
-        
-        let reuseID = "pin"
-        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseID)
-        if pinView == nil {
-            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseID)
-            pinView?.canShowCallout = false
-        } else {
-            pinView?.annotation = annotation
-        }
-        return pinView
-    }
     
     func _autoWalk() {
         guard let point = _nowPoint else {
@@ -148,4 +146,40 @@ extension ViewController: MKMapViewDelegate {
     func _autoIndex() -> Int {
         return Int(arc4random()%6)
     }
+    
+    func _goDestinationWithTimer() {
+        guard let _ = _destinationPoint else { return }
+        let distanceX = _destinationPoint!.latitude - _nowPoint!.latitude
+        let distanceY = _destinationPoint!.longitude - _nowPoint!.longitude
+        
+        var randomX = _autoNumberArray[_autoIndex()]
+        var randomY = _autoNumberArray[_autoIndex()]
+        
+        if distanceX < 0 {
+            randomX = -randomX
+        }
+        if distanceY < 0 {
+            randomY = -randomY
+        }
+        _changeGPXFile(with:CLLocationCoordinate2D(latitude: _nowPoint!.latitude + randomX, longitude: _nowPoint!.longitude + randomY))
+    }
+}
+
+extension ViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation {
+            return nil
+        }
+        
+        let reuseID = "pin"
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseID)
+        if pinView == nil {
+            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseID)
+            pinView?.canShowCallout = false
+        } else {
+            pinView?.annotation = annotation
+        }
+        return pinView
+    }
+
 }
