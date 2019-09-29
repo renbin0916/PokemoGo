@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     
     private var _walkNumber = 0
     
-    private var _autoNumberArray = [0.000002, 0.000004, 0.000005, 0.000006, 0.000007, 0.000008]
+    private var _autoNumberArray = [0.000003, 0.000005, 0.000007, 0.000009, 0.000011, 0.000012]
     
     private var _timer: Timer?
     
